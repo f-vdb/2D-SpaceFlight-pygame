@@ -3,6 +3,7 @@ import pygame
 
 import settings
 import ship
+import gameFunctions as gf
 
 def run_game():
     # Initialisiere das Spiel.
@@ -17,14 +18,10 @@ def run_game():
 
     # Starte die Hauptschleife des Spiels.
     while True:
-        # Lauscht auf Tastatur- und Mauseingaben.
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.checkEvents()
+        gf.updateScreen(mySettings, screen, myShip)
 
-        screen.fill(mySettings.backgroundColor)
-        myShip.blitme() # blitme ist eine Methode der Klasse ship.
-        pygame.display.flip()
+      
 
 run_game()
 

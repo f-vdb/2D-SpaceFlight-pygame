@@ -5,7 +5,7 @@ class Ship():
     def __init__(self, screen):
         # Eigenschaften der Klasse Ship:
         self.screen = screen
-        self.image = pygame.image.load("rocket01.png")
+        self.image = pygame.image.load("images/rocket01.png")
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
