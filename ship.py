@@ -1,5 +1,9 @@
 import pygame
 
+# Geschwindigkeit des Raumschiffes jetzt auch in settings.
+import settings
+mySettings = settings.Settings()
+
 class Ship():
     # Init-Funktion bekommt einen Parameter (ein Argument): screen)
     def __init__(self, screen):
@@ -19,9 +23,9 @@ class Ship():
     # Methode der Klassen Ship:
     def update(self):
         if self.movingRight == True:
-            self.rect.centerx += 1
+            self.rect.centerx += mySettings.myShipSpeed
         if self.movingLeft == True:
-            self.rect.centerx -= 1
+            self.rect.centerx -= mySettings.myShipSpeed
 
     def blitme(self):
         """ Zeichne das Raumschiff.

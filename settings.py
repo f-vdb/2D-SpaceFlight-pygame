@@ -8,3 +8,4 @@ class Settings():
         self.screenHight = 600
         self.backgroundColor = (230, 230, 230)
         self.windowCaption = "Space Flight"
+        self.myShipSpeed = 4
