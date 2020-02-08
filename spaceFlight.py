@@ -21,11 +21,15 @@ def run_game():
     pygame.display.set_caption(mySettings.windowCaption)
     # Schalte die Maus aus, damit sie nicht mehr sichtbar ist.
     pygame.mouse.set_visible(False)
+    # einstellen der fps
+    clock = pygame.time.Clock()
+
     # myShip ist eine Instanz der Klasse Ship aus der Datei ship.
     myShip = ship.Ship(screen)
 
     # Starte die Hauptschleife des Spiels.
     while True:
+        clock.tick(mySettings.fps)
         gf.checkEvents(myShip)
         myShip.update()
         gf.updateScreen(mySettings, screen, myShip)
