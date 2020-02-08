@@ -15,7 +15,7 @@ class Ship():
 
         # Plaziert jedes das Raumschiff mittig am unteren Bidlschirmrand.
         self.rect.centerx = self.screen_rect.centerx
-        self.rect.bottom = self.screen_rect.bottom
+        self.rect.bottom = self.screen_rect.bottom -mySettings.myShipDistanceBottomEdge
 
         self.movingRight = False
         self.movingLeft = False

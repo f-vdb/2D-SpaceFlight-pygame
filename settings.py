@@ -9,4 +9,5 @@ class Settings():
         self.backgroundColor = (230, 230, 230)
         self.windowCaption = "Space Flight"
         self.myShipSpeed = 4
+        self.myShipDistanceBottomEdge = 10
         self.fps = 60
