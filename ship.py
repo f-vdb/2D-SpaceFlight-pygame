@@ -14,12 +14,14 @@ class Ship():
         self.rect.bottom = self.screen_rect.bottom
 
         self.movingRight = False
+        self.movingLeft = False
 
     # Methode der Klassen Ship:
     def update(self):
         if self.movingRight == True:
             self.rect.centerx += 1
-
+        if self.movingLeft == True:
+            self.rect.centerx -= 1
 
     def blitme(self):
         """ Zeichne das Raumschiff.

@@ -11,10 +11,14 @@ def checkEvents(myShip):
                 sys.exit()
             elif event.key == pygame.K_RIGHT:
                 myShip.movingRight = True
+            elif event.key == pygame.K_LEFT:
+                myShip.movingLeft = True
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 myShip.movingRight = False
+            elif event.key == pygame.K_LEFT:
+                myShip.movingLeft = False
 
 def updateScreen(mySettings, screen, ship):
     """Update images on the screen and flip to the new screen."""
