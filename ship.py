@@ -22,9 +22,9 @@ class Ship():
 
     # Methode der Klassen Ship:
     def update(self):
-        if self.movingRight == True:
+        if self.movingRight and self.rect.right < self.screen_rect.right:
             self.rect.centerx += mySettings.myShipSpeed
-        if self.movingLeft == True:
+        if self.movingLeft and self.rect.left > self.screen_rect.left:
             self.rect.centerx -= mySettings.myShipSpeed
 
     def blitme(self):
