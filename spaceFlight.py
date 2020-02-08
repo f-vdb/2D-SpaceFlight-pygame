@@ -18,10 +18,9 @@ def run_game():
 
     # Starte die Hauptschleife des Spiels.
     while True:
-        gf.checkEvents()
+        gf.checkEvents(myShip)
+        myShip.update()
         gf.updateScreen(mySettings, screen, myShip)
-
-      
 
 run_game()
 

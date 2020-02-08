@@ -13,7 +13,14 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
 
+        self.movingRight = False
+
     # Methode der Klassen Ship:
+    def update(self):
+        if self.movingRight == True:
+            self.rect.centerx += 1
+
+
     def blitme(self):
         """ Zeichne das Raumschiff.
             blit: zeichnet ein Image auf das andere. """
