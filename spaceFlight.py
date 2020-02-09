@@ -1,6 +1,5 @@
 import sys
 import pygame
-
 import settings
 import ship
 import gameFunctions as gf

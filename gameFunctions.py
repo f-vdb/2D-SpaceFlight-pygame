@@ -14,6 +14,7 @@ def checkKeyDownEvents(event, myShip):
     elif event.key == pygame.K_DOWN:
         myShip.movingDown = True
 
+
 def checkKeyUpEvents(event, myship):
     if event.key == pygame.K_RIGHT:
         myship.movingRight = False
@@ -24,6 +25,7 @@ def checkKeyUpEvents(event, myship):
     elif event.key == pygame.K_DOWN:
         myship.movingDown = False
 
+
 def checkEvents(myShip):
     """Respond to keypress and mouse events."""
     for event in pygame.event.get():
@@ -33,7 +35,7 @@ def checkEvents(myShip):
             checkKeyDownEvents(event, myShip)
         elif event.type == pygame.KEYUP:
             checkKeyUpEvents(event, myShip)
-            
+
 
 def updateScreen(mySettings, screen, ship):
     """Update images on the screen and flip to the new screen."""

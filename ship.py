@@ -17,8 +17,6 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom - mySettings.myShipDistanceBottomEdge
 
-
-
         self.movingRight = False
         self.movingLeft = False
         self.movingUp = False
@@ -39,6 +37,4 @@ class Ship():
         """ Zeichne das Raumschiff.
             blit: zeichnet ein Image auf das andere. """
         self.screen.blit(self.image, self.rect)
-
-
 
