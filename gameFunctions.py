@@ -9,12 +9,20 @@ def checkKeyDownEvents(event, myShip):
         myShip.movingLeft = True
     elif event.key == pygame.K_q or event.key == pygame.K_ESCAPE:
         sys.exit()
+    elif event.key == pygame.K_UP:
+        myShip.movingUp = True
+    elif event.key == pygame.K_DOWN:
+        myShip.movingDown = True
 
 def checkKeyUpEvents(event, myship):
     if event.key == pygame.K_RIGHT:
         myship.movingRight = False
     elif event.key == pygame.K_LEFT:
         myship.movingLeft = False
+    elif event.key == pygame.K_UP:
+        myship.movingUp = False
+    elif event.key == pygame.K_DOWN:
+        myship.movingDown = False
 
 def checkEvents(myShip):
     """Respond to keypress and mouse events."""
