@@ -4,6 +4,7 @@ import settings
 import ship
 import gameFunctions as gf
 
+
 def run_game():
     # Initialisiere das Spiel.
     pygame.init()
@@ -13,10 +14,10 @@ def run_game():
     # Spiel im Fenstermodus. Sinnvoll bei der Fehlersuche.
     # Darum ist die Zeile auskommentiert.
     # So kann die Zeile einfach wieder aktiviert werden.
-    #screen = pygame.display.set_mode((mySettings.screenWidth, mySettings.screenHight))
+    screen = pygame.display.set_mode((mySettings.screenWidth, mySettings.screenHight))
 
     # Spiel im Vollbilsmodus.
-    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    #screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     pygame.display.set_caption(mySettings.windowCaption)
     # Schalte die Maus aus, damit sie nicht mehr sichtbar ist.
     pygame.mouse.set_visible(False)
@@ -26,13 +27,17 @@ def run_game():
     # myShip ist eine Instanz der Klasse Ship aus der Datei ship.
     myShip = ship.Ship(screen)
 
+    bullets = pygame.sprite.Group()
+
     # Starte die Hauptschleife des Spiels.
     while True:
         clock.tick(mySettings.fps)
-        gf.checkEvents(myShip)
+        gf.checkEvents(mySettings, screen, myShip, bullets)
         myShip.update()
-        gf.updateScreen(mySettings, screen, myShip)
+        bullets.update()
+        # bullets fliegen unendlich weiter...kostet Arbeitsspeicher und CPU
+        print(len(bullets))
+
+        gf.updateScreen(mySettings, screen, myShip, bullets)
 
 run_game()
-
-
