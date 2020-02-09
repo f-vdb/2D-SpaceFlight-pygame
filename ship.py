@@ -30,9 +30,9 @@ class Ship():
             self.rect.centerx += mySettings.myShipSpeed
         if self.movingLeft and self.rect.left > self.screen_rect.left:
             self.rect.centerx -= mySettings.myShipSpeed
-        if self.movingUp:
+        if self.movingUp and self.rect.top > self.screen_rect.top:
             self.rect.centery -= mySettings.myShipSpeed
-        if self.movingDown:
+        if self.movingDown and self.rect.bottom < self.screen_rect.bottom - mySettings.myShipDistanceBottomEdge:
             self.rect.centery += mySettings.myShipSpeed
 
     def blitme(self):
