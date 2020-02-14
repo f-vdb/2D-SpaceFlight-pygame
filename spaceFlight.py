@@ -34,16 +34,7 @@ def run_game():
         clock.tick(mySettings.fps)
         gf.checkEvents(mySettings, screen, myShip, bullets)
         myShip.update()
-        bullets.update()
-        # bullets fliegen unendlich weiter...kostet Arbeitsspeicher und CPU
-        # print(len(bullets))
-        # Geschosse die aus dem Bild geflogen sind loeschen.
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-
-
-
+        gf.updateBullets(bullets)
         gf.updateScreen(mySettings, screen, myShip, bullets)
 
 run_game()
