@@ -1,6 +1,7 @@
 import sys
 import pygame
 import bullet
+import asteroid
 
 def checkKeyDownEvents(event, settings, screen, myShip, bullets):
     if event.key == pygame.K_RIGHT:
@@ -45,13 +46,16 @@ def checkEvents(settings, screen, myShip, bullets):
             checkKeyUpEvents(event, myShip)
 
 
-def updateScreen(settings, screen, ship, bullets):
+def updateScreen(settings, screen, ship, bullets, asteriods):
     """Update images on the screen and flip to the new screen."""
     # Redraws the screen at each loop pass.
     screen.fill(settings.backgroundColor)
     ship.blitme()
     for bullet in bullets:
         bullet.drawBullet()
+
+    for asteriod in asteriods:
+        asteriod.drawAsteriod()
 
     # cleans the screen
     pygame.display.flip()
@@ -65,3 +69,19 @@ def updateBullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+
+
+
+def createAsteriods(settings, screen, asteriods):
+    if len(asteriods) < settings.allowedAsteriods:
+        newAsteriod = asteroid.Asteroid(settings, screen)
+        asteriods.add(newAsteriod)
+
+
+def updateAsteriods(settings, screen, asteriods):
+    createAsteriods(settings, screen, asteriods)
+    asteriods.update()
+
+    for asteroid in asteriods.copy():
+        if asteroid.rect.centery > asteroid.screen_rect.bottom:
+            asteriods.remove(asteroid)

@@ -2,6 +2,7 @@ import sys
 import pygame
 import settings
 import ship
+import asteroid
 import gameFunctions as gf
 
 
@@ -28,13 +29,16 @@ def run_game():
     myShip = ship.Ship(screen)
 
     bullets = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
     # Starte die Hauptschleife des Spiels.
     while True:
+        print("len asteroids: ", len(asteroids))
         clock.tick(mySettings.fps)
         gf.checkEvents(mySettings, screen, myShip, bullets)
         myShip.update()
         gf.updateBullets(bullets)
-        gf.updateScreen(mySettings, screen, myShip, bullets)
+        gf.updateAsteriods(mySettings, screen, asteroids)
+        gf.updateScreen(mySettings, screen, myShip, bullets, asteroids)
 
 run_game()

@@ -19,3 +19,6 @@ class Settings():
         self.bulletColor = 60, 60, 60
         self.allowedBullets = 3
 
+
+        self.allowedAsteriods = 1
+
