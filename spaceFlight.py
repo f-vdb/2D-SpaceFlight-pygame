@@ -1,10 +1,15 @@
 import sys
+import os
 import pygame
 import settings
 import ship
 import asteroid
 import gameFunctions as gf
 
+# pygame.init() ruft die Funktion pygame.freetype.init()
+# automatisch auf, wenn das Modul freetype zuvor importiert wurde.
+# Darum wird hier nochmal explizit freetyp importiert.
+import pygame.freetype
 
 def run_game():
     # Initialisiere das Spiel.
@@ -25,6 +30,10 @@ def run_game():
     # einstellen der fps
     clock = pygame.time.Clock()
 
+    font = pygame.freetype.Font("fonts/sans.ttf")
+
+
+
     # myShip ist eine Instanz der Klasse Ship aus der Datei ship.
     myShip = ship.Ship(screen)
 
@@ -33,12 +42,14 @@ def run_game():
 
     # Starte die Hauptschleife des Spiels.
     while True:
-        print("len asteroids: ", len(asteroids))
         clock.tick(mySettings.fps)
+
         gf.checkEvents(mySettings, screen, myShip, bullets)
         myShip.update()
-        gf.updateBullets(bullets)
+        gf.updateBullets(bullets, asteroids)
         gf.updateAsteriods(mySettings, screen, asteroids)
         gf.updateScreen(mySettings, screen, myShip, bullets, asteroids)
+
+
 
 run_game()

@@ -57,11 +57,20 @@ def updateScreen(settings, screen, ship, bullets, asteriods):
     for asteriod in asteriods:
         asteriod.drawAsteriod()
 
+  
+    font = pygame.freetype.Font("fonts/sans.ttf")
+    font.render_to(screen, (700, 32), "Hello World", settings.colors["darkGrey"], size=16)
+
+    '''
+    font.render_to(screen, (700, 32), "Hello World", settings.colors["darkGrey"],
+                   settings.colors["blue"], size=16,
+                   style=pygame.freetype.STYLE_UNDERLINE | pygame.freetype.STYLE_OBLIQUE)
+    '''
     # cleans the screen
     pygame.display.flip()
 
 
-def updateBullets(bullets):
+def updateBullets(bullets, asteriods):
     # bullets fliegen unendlich weiter...kostet Arbeitsspeicher und CPU
     # print(len(bullets))
     # Geschosse die aus dem Bild geflogen sind loeschen.
@@ -69,19 +78,20 @@ def updateBullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-
-
+    collisions = pygame.sprite.groupcollide(bullets, asteriods, True, True)
 
 def createAsteriods(settings, screen, asteriods):
     if len(asteriods) < settings.allowedAsteriods:
         newAsteriod = asteroid.Asteroid(settings, screen)
         asteriods.add(newAsteriod)
 
-
 def updateAsteriods(settings, screen, asteriods):
     createAsteriods(settings, screen, asteriods)
     asteriods.update()
 
     for asteroid in asteriods.copy():
-        if asteroid.rect.centery > asteroid.screen_rect.bottom:
+        if asteroid.rect.top > asteroid.screen_rect.bottom:
             asteriods.remove(asteroid)
+
+
+

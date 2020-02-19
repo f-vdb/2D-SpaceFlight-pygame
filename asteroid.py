@@ -15,13 +15,13 @@ class Asteroid(pygame.sprite.Sprite):
         self.screen_rect = screen.get_rect()
 
         self.rect.centerx = 100
-        self.rect.top = self.screen_rect.top
+        self.rect.top = self.screen_rect.top-100
         self.speed = 6
+        self.settings = settings
 
 
     def update(self):
         self.rect.centery += self.speed
-        print(self.rect.centery)
 
     def drawAsteriod(self):
         self.screen.blit(self.image, self.rect)
