@@ -23,6 +23,7 @@ class Asteroid(pygame.sprite.Sprite):
     def update(self):
         self.rect.centery += self.speed
 
+
     def drawAsteriod(self):
         self.screen.blit(self.image, self.rect)
 

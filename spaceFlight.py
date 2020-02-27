@@ -1,9 +1,7 @@
-import sys
-import os
+
 import pygame
 import settings
 import ship
-import asteroid
 import gameFunctions as gf
 
 # pygame.init() ruft die Funktion pygame.freetype.init()
@@ -32,7 +30,7 @@ def run_game():
 
     font = pygame.freetype.Font("fonts/sans.ttf")
 
-
+    gameRunning = True
 
     # myShip ist eine Instanz der Klasse Ship aus der Datei ship.
     myShip = ship.Ship(screen)
@@ -41,15 +39,23 @@ def run_game():
     asteroids = pygame.sprite.Group()
 
     # Starte die Hauptschleife des Spiels.
-    while True:
-        clock.tick(mySettings.fps)
-
-        gf.checkEvents(mySettings, screen, myShip, bullets)
-        myShip.update()
-        gf.updateBullets(bullets, asteroids)
-        gf.updateAsteriods(mySettings, screen, asteroids)
-        gf.updateScreen(mySettings, screen, myShip, bullets, asteroids)
-
-
+    if mySettings.gameRunning == True:
+        while True:
+            clock.tick(mySettings.fps)
+            gf.checkEvents(mySettings, screen, myShip, bullets)
+            myShip.update()
+            gf.updateBullets(bullets, asteroids)
+            gf.updateAsteriods(mySettings, screen, asteroids)
+            gf.updateScreen(mySettings, screen, myShip, bullets, asteroids)
+            if mySettings.gameRunning == False:
+                break
+    if mySettings.gameRunning == False:
+        while True:
+            gf.checkEventNewGame(mySettings)
+            if mySettings.newGame == True:
+                break
+    if mySettings.newGame == True:
+        mySettings.newGame = False
+        run_game()
 
 run_game()

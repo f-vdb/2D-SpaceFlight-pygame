@@ -28,5 +28,9 @@ class Settings():
             "darkGrey": pygame.Color(100, 100, 100),
             "green": pygame.Color(50, 255, 63),
             "red": pygame.Color(220, 30, 30),
-            "blue": pygame.Color(50, 75, 245)
+            "blue": pygame.Color(50, 75, 245),
+            "black": pygame.Color(0, 0, 0)
         }
+
+        self.gameRunning = True
+        self.newGame = False

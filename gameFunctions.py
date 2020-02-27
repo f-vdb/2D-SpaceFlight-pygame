@@ -35,6 +35,18 @@ def checkKeyUpEvents(event, myship):
         myship.movingDown = False
 
 
+def checkEventNewGame(settings):
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                sys.exit()
+            elif event.key == pygame.K_n:
+                print("n")
+                settings.newGame = True
+
+
 def checkEvents(settings, screen, myShip, bullets):
     """Respond to keypress and mouse events."""
     for event in pygame.event.get():
@@ -57,7 +69,12 @@ def updateScreen(settings, screen, ship, bullets, asteriods):
     for asteriod in asteriods:
         asteriod.drawAsteriod()
 
-  
+    if pygame.sprite.spritecollideany(ship, asteriods):
+        font = pygame.freetype.Font("fonts/sans.ttf")
+        font.render_to(screen, (200, 400), "Game OVER", settings.colors["black"], size=64)
+        settings.gameRunning = False
+
+
     font = pygame.freetype.Font("fonts/sans.ttf")
     font.render_to(screen, (700, 32), "Hello World", settings.colors["darkGrey"], size=16)
 
